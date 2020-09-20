@@ -10,28 +10,47 @@
 #include <iostream>
 #include "Person.h"
 
+const int ARRAY_SIZE = 2;
+
+void buildPeopleArray(Person people[])
+{
+	for (int count = 0; count < ARRAY_SIZE; ++count)
+	{
+		std::string name;
+		int age;
+		
+		std::cout << "Please Enter Your Name: ";
+		std::cin >> name;
+		std::cout << std::endl;
+		std::cout << "Please Enter Your Age: ";
+		std::cin >> age;
+		std::cout << std::endl;
+
+		const Person person = Person(name, int(age));
+
+		people[count] = person;
+
+		std::cout << "\n---------------------------------------------" << std::endl;
+	}
+}
+
+void displayPeopleArray(Person people[])
+{
+	for (int count = 0; count < ARRAY_SIZE; ++count)
+	{
+		people[count].SaysHello();
+		std::cout << people[count].ToString() << std::endl;
+	}
+}
+
 
 int main()
 {
-	// instantiation
-	Person person1;
+	Person people[ARRAY_SIZE];
 
-	person1.SetName("Rose");
-	person1.SetAge(22);
-	
-	person1.SaysHello();
+	buildPeopleArray(people);
 
-	std::cout << person1.ToString() << std::endl;
-
-	Person person2;
-	
-	person2.SetName("Nick");
-	person2.SetAge(26);
-
-	person2.SaysHello();
-
-	std::cout << person2.ToString() << std::endl;
-	
+	displayPeopleArray(people);
 }
 
 
