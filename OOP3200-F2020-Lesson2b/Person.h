@@ -32,6 +32,8 @@ public:
 
 	// methods
 	void SaysHello();
+
+	std::string ToString();
 	
 
 private:

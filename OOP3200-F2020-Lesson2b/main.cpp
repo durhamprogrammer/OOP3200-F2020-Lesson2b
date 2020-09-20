@@ -21,10 +21,7 @@ int main()
 	
 	person1.SaysHello();
 
-	std::cout << "\n==================================================================" << std::endl;
-	std::cout << person1.GetName() << " is a Person" << std::endl;
-	std::cout << person1.GetName() << " is " << person1.GetAge() << " years old" << std::endl;
-	std::cout << "==================================================================\n" << std::endl;
+	std::cout << person1.ToString() << std::endl;
 
 	Person person2;
 	
@@ -33,10 +30,8 @@ int main()
 
 	person2.SaysHello();
 
-	std::cout << "\n==================================================================" << std::endl;
-	std::cout << person2.GetName() << " is a Person" << std::endl;
-	std::cout << person2.GetName() << " is " << person2.GetAge() << " years old" << std::endl;
-	std::cout << "==================================================================" << std::endl;
+	std::cout << person2.ToString() << std::endl;
+	
 }
 
 
