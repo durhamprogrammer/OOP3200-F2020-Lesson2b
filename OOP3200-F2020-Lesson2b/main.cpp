@@ -8,6 +8,7 @@
 
 
 #include <iostream>
+#include <exception>
 #include "Person.h"
 
 const int ARRAY_SIZE = 2;
@@ -18,15 +19,40 @@ void buildPeopleArray(Person people[])
 	{
 		std::string name;
 		int age;
+		bool validInput = false;
 		
 		std::cout << "Please Enter Your Name: ";
 		std::cin >> name;
 		std::cout << std::endl;
-		std::cout << "Please Enter Your Age: ";
-		std::cin >> age;
-		std::cout << std::endl;
 
-		const Person person = Person(name, int(age));
+		while(!validInput)
+		{
+			try
+			{
+				std::cout << "Please Enter Your Age: ";
+				std::cin >> age;
+				std::cout << std::endl;
+				if (std::cin.fail())
+				{
+					std::cin.clear();
+					std::cin.ignore(256, '\n');
+					throw 0;
+				}
+				else
+				{
+					validInput = true;
+				}
+			}
+			catch (int exception)
+			{
+				std::cout << "Error: Please enter a valid age" << std::endl;
+
+			}
+		}
+		
+		
+
+		const Person person = Person(name, age);
 
 		people[count] = person;
 
