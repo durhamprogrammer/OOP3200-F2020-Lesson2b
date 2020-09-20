@@ -13,6 +13,7 @@
 
 const int ARRAY_SIZE = 2;
 
+
 /// <summary>
 /// This function gets input from the console
 /// both the Name and age parameters are received from the input stream
@@ -44,6 +45,12 @@ Person ReadPersonFromConsole()
 				std::cin.ignore(256, '\n');
 				throw 0;
 			}
+			else if(age < 1)
+			{
+				std::cin.clear();
+				std::cin.ignore(256, '\n');
+				throw 1;
+			}
 			else
 			{
 				validInput = true;
@@ -51,10 +58,22 @@ Person ReadPersonFromConsole()
 		}
 		catch (int exception)
 		{
-			std::cout << "Error: Please enter a valid age" << std::endl;
-
+			switch(exception)
+			{
+			case 0:
+				std::cout << "Error: Please enter an integer for the age value" << std::endl;
+				break;
+			case 1:
+				std::cout << "Error: Please enter an integer greater than 0 for the age value" << std::endl;
+				break;
+			default: ;
+				std::cout << "Error: Please enter a valid age value" << std::endl;
+			}
 		}
 	}
+
+	// windows specific
+	system("cls");
 
 	return Person(name, age);
 }
@@ -67,9 +86,10 @@ void buildPeopleArray(Person people[])
 {
 	for (int count = 0; count < ARRAY_SIZE; ++count)
 	{
+		std::cout << "---- Enter New Person ----------------------------------------\n" << std::endl;
+		
 		people[count] = ReadPersonFromConsole();
 
-		std::cout << "\n---------------------------------------------" << std::endl;
 	}
 }
 

@@ -10,6 +10,11 @@
 
 #include <iostream>
 
+/// <summary>
+/// This constructor takes in two parameters name <string> and age<int>
+/// </summary>
+/// <param name="name"></param>
+/// <param name="age"></param>
 Person::Person(std::string name, int age)
 {
 	m_name = name;
